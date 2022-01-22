@@ -11,7 +11,7 @@ import wx
 from functions import encryption, decrypt
 
 # 版本号
-version = 'v2.2'
+version = 'v3.0'
 
 
 class StringEncryptor(wx.Frame):
@@ -43,7 +43,7 @@ class StringEncryptor(wx.Frame):
         bt_updatelog = wx.Button(pnl, label='更新日志')
         bt_quit = wx.Button(pnl, label='退出')
 
-        sur = wx.StaticText(pnl, label=f"{decrypt('o9cega37y7d1g8f2q7dfx')}", pos=(1800, 1000))   # 彩蛋
+        sur = wx.StaticText(pnl, label=f"{decrypt('t9cerpa37ny1773sp8f2nqfbemxz')}", pos=(1800, 1000))   # 彩蛋
 
         # 绑定事件
         bt_encryption.Bind(wx.EVT_BUTTON, self.run_encryption)  # 绑定加密按钮
@@ -61,11 +61,11 @@ class StringEncryptor(wx.Frame):
                                  faceName='方正力黑 简 ExtraBold')
         font_title_result = wx.Font(pointSize=14, family=wx.DEFAULT, style=wx.NORMAL, weight=wx.LIGHT, underline=False,
                                     faceName='方正字迹-叶根友特楷简体')
-        font_content = wx.Font(pointSize=13, family=wx.DEFAULT, style=wx.NORMAL, weight=wx.LIGHT, underline=False,
+        font_content = wx.Font(pointSize=14, family=wx.DEFAULT, style=wx.NORMAL, weight=wx.LIGHT, underline=False,
                                faceName='鬼灵精怪双子座')
         font_button_large = wx.Font(pointSize=18, family=wx.DEFAULT, style=wx.NORMAL, weight=wx.LIGHT, underline=False,
                                     faceName='方正颜真卿楷书 简繁')
-        font_button_small = wx.Font(pointSize=13, family=wx.DEFAULT, style=wx.NORMAL, weight=wx.LIGHT, underline=False,
+        font_button_small = wx.Font(pointSize=14, family=wx.DEFAULT, style=wx.NORMAL, weight=wx.LIGHT, underline=False,
                                     faceName='方正颜真卿楷书 简繁')
         title_all.SetFont(font_title_all)
         tips_input.SetFont(font_content)
@@ -232,9 +232,6 @@ class StringEncryptor(wx.Frame):
 文本框中的内容，
 如果最后一个字符为z，
 运行方式为解密，否则为加密；
-如果密码中最后没有x，
-明文的最后一个字符不会被解密；
-如果有，z必须在x后面
         
 一些想说的话:
 这原本是另一个项目的产物，
@@ -263,7 +260,11 @@ v2.1:
 
 2022.1.21 20:41
 v2.2:
-多行文本框"""
+多行文本框
+
+2022.1.22 11:36
+v3.0:
+加强了加密算法，引入了随机数进行加密"""
         wx.MessageBox(message, "更新日志")
 
     @staticmethod
