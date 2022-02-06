@@ -11,7 +11,7 @@ import wx
 from functions import encryption, decrypt
 
 # 版本号
-version = 'v3.0'
+version = 'v3.2'
 
 
 class StringEncryptor(wx.Frame):
@@ -183,7 +183,7 @@ class StringEncryptor(wx.Frame):
         """
         string = self.string_primary.GetValue()
         new_string = encryption(string)
-        self.string_new_encryption.SetValue(str(new_string))
+        self.string_new_encryption.SetValue(f'{str(new_string)}z')
         print("加密后:", new_string)
         self.copy_encryption(self)
         return new_string
@@ -264,13 +264,31 @@ v2.2:
 
 2022.1.22 11:36
 v3.0:
-加强了加密算法，引入了随机数进行加密"""
+加强了加密算法，引入了随机数进行加密
+
+2022.1.25 18:06
+v3.1:
+考虑到除信息传输以外的使用场景，
+放弃了随机数加密
+
+V3.2:
+在不使用随机数和固定数字的情况下，
+设置密码后缀参数"""
         wx.MessageBox(message, "更新日志")
 
     @staticmethod
     def bt_exit(event):
+        
+
         from sys import exit
         exit()
+
+    def sup(self, event):
+        """
+        菜单用
+        """
+        got = self.string_new_decrypt.GetValue()
+        self.string_new_encryption.SetValue(got)
 
 
 if __name__ == '__main__':

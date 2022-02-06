@@ -5,12 +5,12 @@ def encryption(primary_string):
     """
     用于对字符串进行加密
     """
-    from random import randint
+    # from random import randint        # v3.1抛弃随机数
 
     # 用于保存结果
     final_password = ''
     for i in primary_string:
-        rand_num = randint(1, 3)  # 得到随机数
+        rand_num = int(str(ord(i))[1])+1
         ord_i = str(ord(i) * rand_num)  # 得到整型的i
         pwd_head_num = int(ord_i[-1])  # 密码头参数
         pwd_head = chr(ord('y') - pwd_head_num)  # 生成密码头
@@ -21,8 +21,6 @@ def encryption(primary_string):
 
         # 添加
         final_password += adding_str
-
-    final_password += 'z'    # z是作为一种对软件运行模式的解析，对解密算法没有影响
 
     return final_password
 
