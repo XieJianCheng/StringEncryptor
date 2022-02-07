@@ -10,13 +10,13 @@ def encryption(primary_string):
     # 用于保存结果
     final_password = ''
     for i in primary_string:
-        rand_num = int(str(ord(i))[1])+1
+        rand_num = int((int(str(ord(i))[0])+int(str(ord(i))[1]))//2)+1    # 密码后缀参数
         ord_i = str(ord(i) * rand_num)  # 得到整型的i
         pwd_head_num = int(ord_i[-1])  # 密码头参数
         pwd_head = chr(ord('y') - pwd_head_num)  # 生成密码头
 
         # 生成单个字符的密码，也就是i的密码
-        adding_str = f'{pwd_head}{str(hex(int(str(ord(i) * rand_num)[:-1])))[2:]}{chr(ord(pwd_head) - rand_num * 2)}'
+        adding_str = f'{pwd_head}{str(hex(int(str(ord(i) * rand_num)[:-1])))[2:]}{chr(ord(pwd_head) - rand_num)}'
         # 我也是迫不得已写得这么乱的
 
         # 添加
@@ -73,7 +73,7 @@ def decrypt(primary_password):
         read_hex = str(int(tmp_hex, 16))
         primary_num = int(f'{read_hex}{read_pwdhead}')
         # 处理
-        read_pwdend = int((ord(tmp_pwdhead) - ord(tmp_pwdend)) / 2)
+        read_pwdend = int((ord(tmp_pwdhead) - ord(tmp_pwdend)))
         final_num = int(primary_num / read_pwdend)
 
         # 得到明文
